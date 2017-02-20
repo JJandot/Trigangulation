@@ -99,20 +99,9 @@ class Algorithmes {
 	}
 
 	private static boolean isPositive(Point ext1, Point origine, Point ext2){
-		double vecteur1x;
-		double vecteur2x;
-		double vecteur1y;
-		double vecteur2y;
-
-		vecteur1x = ext1.x - origine.x;
-		vecteur1y = ext1.y - origine.y;
-
-		vecteur2x = ext2.x - origine.x;
-		vecteur2y = ext2.y - origine.y;
-
-        if(origine.right)
-            return ((vecteur2x * vecteur1y) - (vecteur1x * vecteur2y)) > 0;
-		return ((vecteur1x * vecteur2y) - (vecteur2x * vecteur1y)) > 0;
+		return origine.right ?
+				(((ext2.x - origine.x) * (ext1.y - origine.y)) - ((ext1.x - origine.x) * (ext2.y - origine.y))) > 0 :
+				(((ext1.x - origine.x) * (ext2.y - origine.y)) - ((ext2.x - origine.x) * (ext1.y - origine.y))) > 0;
 	}
 
 	private static void triangule(Vector<Point> chaineGenerale, Vector<Segment> segments){
